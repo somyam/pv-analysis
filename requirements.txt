@@ -1,0 +1,22 @@
+# Simple DL for FAERS - Requirements
+
+# Core deep learning
+torch>=2.0.0
+torchvision>=0.15.0
+
+# Data processing
+pandas>=2.0.0
+numpy>=1.24.0
+
+# Machine learning utilities
+scikit-learn>=1.3.0
+
+# Visualization
+matplotlib>=3.7.0
+
+# Optional: For better visualizations
+# seaborn>=0.12.0
+# plotly>=5.14.0
+
+# Optional: For embedding visualization
+# umap-learn>=0.5.3
