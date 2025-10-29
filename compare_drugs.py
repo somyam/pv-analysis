@@ -14,7 +14,7 @@ class DrugComparator:
 
     def __init__(self, model_path="outputs/my_model/best_model.pt"):
         # Load checkpoint
-        checkpoint = torch.load(model_path, map_location='cpu')
+        checkpoint = torch.load(model_path, map_location='cpu', weights_only=False)
         self.metadata = checkpoint['metadata']
 
         # Load vocabularies

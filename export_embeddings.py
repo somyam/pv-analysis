@@ -15,7 +15,7 @@ def export_embeddings(
     """Export drug and reaction embeddings to CSV."""
 
     print("Loading model...")
-    checkpoint = torch.load(model_path, map_location="cpu")
+    checkpoint = torch.load(model_path, map_location="cpu", weights_only=False)
     metadata = checkpoint["metadata"]
 
     # Load vocabularies

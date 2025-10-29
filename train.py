@@ -384,7 +384,7 @@ def train_model(
     print(f"Best validation AUC: {best_val_auc:.4f} at epoch {best_epoch}")
 
     # Load best model for final evaluation
-    checkpoint = torch.load(output_dir / "best_model.pt")
+    checkpoint = torch.load(output_dir / "best_model.pt", weights_only=False)
     model.load_state_dict(checkpoint["model_state_dict"])
 
     # Final evaluation on test set

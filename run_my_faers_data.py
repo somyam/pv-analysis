@@ -341,7 +341,7 @@ def main():
     print("STEP 6: Final evaluation...")
     print("-" * 80)
 
-    checkpoint = torch.load(Path(OUTPUT_DIR) / "best_model.pt")
+    checkpoint = torch.load(Path(OUTPUT_DIR) / "best_model.pt", weights_only=False)
     model.load_state_dict(checkpoint["model_state_dict"])
 
     test_metrics = evaluate(model, test_loader, criterion, device)

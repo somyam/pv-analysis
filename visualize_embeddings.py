@@ -67,15 +67,15 @@ def plot_tsne(
         alpha=0.6,
         s=100,
         c=range(len(coords)),
-        cmap='viridis',
-        edgecolors='black',
+        cmap="viridis",
+        edgecolors="black",
         linewidth=0.5,
     )
 
     # Annotate some points
     if annotate_top_k > 0:
         # Annotate items that are furthest from origin (most distinct)
-        distances = np.sqrt(coords[:, 0]**2 + coords[:, 1]**2)
+        distances = np.sqrt(coords[:, 0] ** 2 + coords[:, 1] ** 2)
         top_indices = np.argsort(distances)[-annotate_top_k:]
 
         for idx in top_indices:
@@ -84,20 +84,20 @@ def plot_tsne(
                 label,
                 (coords[idx, 0], coords[idx, 1]),
                 xytext=(5, 5),
-                textcoords='offset points',
+                textcoords="offset points",
                 fontsize=8,
                 alpha=0.7,
-                bbox=dict(boxstyle='round,pad=0.3', facecolor='white', alpha=0.7),
+                bbox=dict(boxstyle="round,pad=0.3", facecolor="white", alpha=0.7),
             )
 
-    ax.set_xlabel('t-SNE Dimension 1', fontsize=12)
-    ax.set_ylabel('t-SNE Dimension 2', fontsize=12)
-    ax.set_title(title, fontsize=14, fontweight='bold')
+    ax.set_xlabel("t-SNE Dimension 1", fontsize=12)
+    ax.set_ylabel("t-SNE Dimension 2", fontsize=12)
+    ax.set_title(title, fontsize=14, fontweight="bold")
     ax.grid(True, alpha=0.3)
 
-    plt.colorbar(scatter, label='Index', ax=ax)
+    plt.colorbar(scatter, label="Index", ax=ax)
     plt.tight_layout()
-    plt.savefig(output_path, dpi=150, bbox_inches='tight')
+    plt.savefig(output_path, dpi=150, bbox_inches="tight")
     print(f"Saved to {output_path}")
     plt.close()
 
@@ -154,13 +154,13 @@ def plot_umap(
         alpha=0.6,
         s=100,
         c=range(len(coords)),
-        cmap='viridis',
-        edgecolors='black',
+        cmap="viridis",
+        edgecolors="black",
         linewidth=0.5,
     )
 
     if annotate_top_k > 0:
-        distances = np.sqrt(coords[:, 0]**2 + coords[:, 1]**2)
+        distances = np.sqrt(coords[:, 0] ** 2 + coords[:, 1] ** 2)
         top_indices = np.argsort(distances)[-annotate_top_k:]
 
         for idx in top_indices:
@@ -169,20 +169,20 @@ def plot_umap(
                 label,
                 (coords[idx, 0], coords[idx, 1]),
                 xytext=(5, 5),
-                textcoords='offset points',
+                textcoords="offset points",
                 fontsize=8,
                 alpha=0.7,
-                bbox=dict(boxstyle='round,pad=0.3', facecolor='white', alpha=0.7),
+                bbox=dict(boxstyle="round,pad=0.3", facecolor="white", alpha=0.7),
             )
 
-    ax.set_xlabel('UMAP Dimension 1', fontsize=12)
-    ax.set_ylabel('UMAP Dimension 2', fontsize=12)
-    ax.set_title(title, fontsize=14, fontweight='bold')
+    ax.set_xlabel("UMAP Dimension 1", fontsize=12)
+    ax.set_ylabel("UMAP Dimension 2", fontsize=12)
+    ax.set_title(title, fontsize=14, fontweight="bold")
     ax.grid(True, alpha=0.3)
 
-    plt.colorbar(scatter, label='Index', ax=ax)
+    plt.colorbar(scatter, label="Index", ax=ax)
     plt.tight_layout()
-    plt.savefig(output_path, dpi=150, bbox_inches='tight')
+    plt.savefig(output_path, dpi=150, bbox_inches="tight")
     print(f"Saved to {output_path}")
     plt.close()
 
@@ -194,30 +194,22 @@ def main():
     parser.add_argument(
         "--embeddings_dir",
         default="outputs/embeddings",
-        help="Directory with exported embeddings"
+        help="Directory with exported embeddings",
     )
     parser.add_argument(
-        "--output_dir",
-        default="outputs/visualizations",
-        help="Where to save plots"
+        "--output_dir", default="outputs/visualizations", help="Where to save plots"
     )
     parser.add_argument(
         "--method",
         choices=["tsne", "umap", "both"],
         default="both",
-        help="Visualization method"
+        help="Visualization method",
     )
     parser.add_argument(
-        "--perplexity",
-        type=int,
-        default=30,
-        help="t-SNE perplexity (5-50)"
+        "--perplexity", type=int, default=30, help="t-SNE perplexity (5-50)"
     )
     parser.add_argument(
-        "--annotate",
-        type=int,
-        default=20,
-        help="Number of items to label"
+        "--annotate", type=int, default=20, help="Number of items to label"
     )
 
     args = parser.parse_args()
@@ -230,7 +222,9 @@ def main():
     print("Loading embeddings...")
     drug_emb, reaction_emb = load_embeddings(args.embeddings_dir)
     print(f"Loaded {len(drug_emb)} drug embeddings (dim={drug_emb.shape[1]})")
-    print(f"Loaded {len(reaction_emb)} reaction embeddings (dim={reaction_emb.shape[1]})")
+    print(
+        f"Loaded {len(reaction_emb)} reaction embeddings (dim={reaction_emb.shape[1]})"
+    )
     print()
 
     # Visualize drugs
@@ -298,6 +292,7 @@ def main():
 if __name__ == "__main__":
     # Can run with command line args or directly
     import sys
+
     if len(sys.argv) == 1:
         # No args - run with defaults
         print("Running with default settings...")
