@@ -10,7 +10,7 @@ A deep learning system that predicts drug-adverse event associations from FDA FA
 
 ### Option 1: Use Pre-trained Model (Recommended)
 
-If you already have the trained model (`best_model.pt`), you can start making predictions immediately:
+With (`best_model.pt`), you can start making predictions immediately:
 
 ```bash
 # 1. Install dependencies
